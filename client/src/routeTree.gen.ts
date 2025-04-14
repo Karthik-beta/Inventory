@@ -91,6 +91,9 @@ const AuthenticatedSalesCustomersLazyImport = createFileRoute(
 const AuthenticatedSalesCreditNotesLazyImport = createFileRoute(
   '/_authenticated/sales/credit-notes',
 )()
+const AuthenticatedInventoryPricelistsLazyImport = createFileRoute(
+  '/_authenticated/inventory/pricelists',
+)()
 const AuthenticatedInventoryItemsGroupsLazyImport = createFileRoute(
   '/_authenticated/inventory/itemsGroups',
 )()
@@ -399,6 +402,17 @@ const AuthenticatedSalesCreditNotesLazyRoute =
     ),
   )
 
+const AuthenticatedInventoryPricelistsLazyRoute =
+  AuthenticatedInventoryPricelistsLazyImport.update({
+    id: '/inventory/pricelists',
+    path: '/inventory/pricelists',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/_authenticated/inventory/pricelists.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
 const AuthenticatedInventoryItemsGroupsLazyRoute =
   AuthenticatedInventoryItemsGroupsLazyImport.update({
     id: '/inventory/itemsGroups',
@@ -551,6 +565,13 @@ declare module '@tanstack/react-router' {
       path: '/inventory/itemsGroups'
       fullPath: '/inventory/itemsGroups'
       preLoaderRoute: typeof AuthenticatedInventoryItemsGroupsLazyImport
+      parentRoute: typeof AuthenticatedRouteImport
+    }
+    '/_authenticated/inventory/pricelists': {
+      id: '/_authenticated/inventory/pricelists'
+      path: '/inventory/pricelists'
+      fullPath: '/inventory/pricelists'
+      preLoaderRoute: typeof AuthenticatedInventoryPricelistsLazyImport
       parentRoute: typeof AuthenticatedRouteImport
     }
     '/_authenticated/sales/credit-notes': {
@@ -723,6 +744,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedInventoryAdjustmentsLazyRoute: typeof AuthenticatedInventoryAdjustmentsLazyRoute
   AuthenticatedInventoryItemsLazyRoute: typeof AuthenticatedInventoryItemsLazyRoute
   AuthenticatedInventoryItemsGroupsLazyRoute: typeof AuthenticatedInventoryItemsGroupsLazyRoute
+  AuthenticatedInventoryPricelistsLazyRoute: typeof AuthenticatedInventoryPricelistsLazyRoute
   AuthenticatedSalesCreditNotesLazyRoute: typeof AuthenticatedSalesCreditNotesLazyRoute
   AuthenticatedSalesCustomersLazyRoute: typeof AuthenticatedSalesCustomersLazyRoute
   AuthenticatedSalesDeliveryChallansLazyRoute: typeof AuthenticatedSalesDeliveryChallansLazyRoute
@@ -748,6 +770,8 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedInventoryItemsLazyRoute: AuthenticatedInventoryItemsLazyRoute,
   AuthenticatedInventoryItemsGroupsLazyRoute:
     AuthenticatedInventoryItemsGroupsLazyRoute,
+  AuthenticatedInventoryPricelistsLazyRoute:
+    AuthenticatedInventoryPricelistsLazyRoute,
   AuthenticatedSalesCreditNotesLazyRoute:
     AuthenticatedSalesCreditNotesLazyRoute,
   AuthenticatedSalesCustomersLazyRoute: AuthenticatedSalesCustomersLazyRoute,
@@ -789,6 +813,7 @@ export interface FileRoutesByFullPath {
   '/inventory/adjustments': typeof AuthenticatedInventoryAdjustmentsLazyRoute
   '/inventory/items': typeof AuthenticatedInventoryItemsLazyRoute
   '/inventory/itemsGroups': typeof AuthenticatedInventoryItemsGroupsLazyRoute
+  '/inventory/pricelists': typeof AuthenticatedInventoryPricelistsLazyRoute
   '/sales/credit-notes': typeof AuthenticatedSalesCreditNotesLazyRoute
   '/sales/customers': typeof AuthenticatedSalesCustomersLazyRoute
   '/sales/deliveryChallans': typeof AuthenticatedSalesDeliveryChallansLazyRoute
@@ -825,6 +850,7 @@ export interface FileRoutesByTo {
   '/inventory/adjustments': typeof AuthenticatedInventoryAdjustmentsLazyRoute
   '/inventory/items': typeof AuthenticatedInventoryItemsLazyRoute
   '/inventory/itemsGroups': typeof AuthenticatedInventoryItemsGroupsLazyRoute
+  '/inventory/pricelists': typeof AuthenticatedInventoryPricelistsLazyRoute
   '/sales/credit-notes': typeof AuthenticatedSalesCreditNotesLazyRoute
   '/sales/customers': typeof AuthenticatedSalesCustomersLazyRoute
   '/sales/deliveryChallans': typeof AuthenticatedSalesDeliveryChallansLazyRoute
@@ -865,6 +891,7 @@ export interface FileRoutesById {
   '/_authenticated/inventory/adjustments': typeof AuthenticatedInventoryAdjustmentsLazyRoute
   '/_authenticated/inventory/items': typeof AuthenticatedInventoryItemsLazyRoute
   '/_authenticated/inventory/itemsGroups': typeof AuthenticatedInventoryItemsGroupsLazyRoute
+  '/_authenticated/inventory/pricelists': typeof AuthenticatedInventoryPricelistsLazyRoute
   '/_authenticated/sales/credit-notes': typeof AuthenticatedSalesCreditNotesLazyRoute
   '/_authenticated/sales/customers': typeof AuthenticatedSalesCustomersLazyRoute
   '/_authenticated/sales/deliveryChallans': typeof AuthenticatedSalesDeliveryChallansLazyRoute
@@ -905,6 +932,7 @@ export interface FileRouteTypes {
     | '/inventory/adjustments'
     | '/inventory/items'
     | '/inventory/itemsGroups'
+    | '/inventory/pricelists'
     | '/sales/credit-notes'
     | '/sales/customers'
     | '/sales/deliveryChallans'
@@ -940,6 +968,7 @@ export interface FileRouteTypes {
     | '/inventory/adjustments'
     | '/inventory/items'
     | '/inventory/itemsGroups'
+    | '/inventory/pricelists'
     | '/sales/credit-notes'
     | '/sales/customers'
     | '/sales/deliveryChallans'
@@ -978,6 +1007,7 @@ export interface FileRouteTypes {
     | '/_authenticated/inventory/adjustments'
     | '/_authenticated/inventory/items'
     | '/_authenticated/inventory/itemsGroups'
+    | '/_authenticated/inventory/pricelists'
     | '/_authenticated/sales/credit-notes'
     | '/_authenticated/sales/customers'
     | '/_authenticated/sales/deliveryChallans'
@@ -1062,6 +1092,7 @@ export const routeTree = rootRoute
         "/_authenticated/inventory/adjustments",
         "/_authenticated/inventory/items",
         "/_authenticated/inventory/itemsGroups",
+        "/_authenticated/inventory/pricelists",
         "/_authenticated/sales/credit-notes",
         "/_authenticated/sales/customers",
         "/_authenticated/sales/deliveryChallans",
@@ -1136,6 +1167,10 @@ export const routeTree = rootRoute
     },
     "/_authenticated/inventory/itemsGroups": {
       "filePath": "_authenticated/inventory/itemsGroups.lazy.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/inventory/pricelists": {
+      "filePath": "_authenticated/inventory/pricelists.lazy.tsx",
       "parent": "/_authenticated"
     },
     "/_authenticated/sales/credit-notes": {

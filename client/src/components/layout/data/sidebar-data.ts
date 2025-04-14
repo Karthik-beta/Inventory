@@ -13,6 +13,7 @@ import {
   IconAdjustmentsHorizontal,
   IconShoppingCart,
   IconShoppingBag,
+  IconReceipt,
 } from '@tabler/icons-react'
 import { AudioWaveform, Command, GalleryVerticalEnd } from 'lucide-react'
 import { type SidebarData } from '../types'
@@ -67,6 +68,11 @@ export const sidebarData: SidebarData = {
               title: 'Items Groups',
               url: '/inventory/itemsGroups',
               icon: IconPackages,
+            },
+            {
+              title: 'Price Lists',
+              url: '/inventory/pricelists',
+              icon: IconReceipt,
             },
             {
               title: 'Inventory Adjustments',
