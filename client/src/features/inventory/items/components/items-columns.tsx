@@ -118,7 +118,7 @@ export const columns: ColumnDef<Item>[] = [
       <LongText>{row.getValue('itemId')}</LongText>
     ),
     enableHiding: true,
-    enableSorting: false,
+    enableSorting: true,
     meta: {
       title: 'Item ID', // Add title here
       className: '', // Add the required className property
@@ -234,7 +234,7 @@ export const columns: ColumnDef<Item>[] = [
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id))
     },
-    enableSorting: false,
+    enableSorting: true,
     enableHiding: true,
     meta: {
       title: 'Sales Account', // Add title here

@@ -3,17 +3,17 @@ import {
   IconHelp,
   IconLayoutDashboard,
   IconNotification,
-  IconPackage,
-  IconPackages,
+  // IconPackage,
+  // IconPackages,
   IconPalette,
   IconSettings,
   IconTool,
   IconUserCog,
   IconBuildingWarehouse,
-  IconAdjustmentsHorizontal,
+  // IconAdjustmentsHorizontal,
   IconShoppingCart,
   IconShoppingBag,
-  IconReceipt,
+  // IconReceipt,
 } from '@tabler/icons-react'
 import { AudioWaveform, Command, GalleryVerticalEnd } from 'lucide-react'
 import { type SidebarData } from '../types'
@@ -62,22 +62,22 @@ export const sidebarData: SidebarData = {
             {
               title: 'Items',
               url: '/inventory/items',
-              icon: IconPackage,
+              // icon: IconPackage,
             },
             {
               title: 'Items Groups',
               url: '/inventory/itemsGroups',
-              icon: IconPackages,
+              // icon: IconPackages,
             },
             {
               title: 'Price Lists',
               url: '/inventory/pricelists',
-              icon: IconReceipt,
+              // icon: IconReceipt,
             },
             {
               title: 'Inventory Adjustments',
               url: '/inventory/adjustments',
-              icon: IconAdjustmentsHorizontal,
+              // icon: IconAdjustmentsHorizontal,
             },
           ],
         }
