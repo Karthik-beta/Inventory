@@ -21,6 +21,21 @@ export function ThemeSwitch() {
     if (metaThemeColor) metaThemeColor.setAttribute('content', themeColor)
   }, [theme])
 
+  /* Listen to system theme changes when 'system' is selected */
+  useEffect(() => {
+    if (theme === 'system') {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+      const handleChange = () => {
+        setTheme(mediaQuery.matches ? 'dark' : 'light')
+      }
+
+      handleChange() // Set initial theme based on system preference
+      mediaQuery.addEventListener('change', handleChange)
+
+      return () => mediaQuery.removeEventListener('change', handleChange)
+    }
+  }, [theme, setTheme])
+
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
