@@ -52,7 +52,7 @@ export const columns: ColumnDef<Item>[] = [
     //     'sticky left-6 md:table-cell'
     //   ),
     // },
-    enableHiding: true,
+    enableHiding: false,
     enableSorting: true,
     meta: {
       title: 'Name', // Add title here
@@ -68,7 +68,7 @@ export const columns: ColumnDef<Item>[] = [
       return <LongText>{row.getValue('sku')}</LongText>
     },
     // meta: { className: 'w-36' },
-    enableHiding: true,
+    enableHiding: false,
     enableSorting: true,
     meta: {
       title: 'SKU', // Add title here
@@ -85,7 +85,7 @@ export const columns: ColumnDef<Item>[] = [
         <div className='flex space-x-2'>{row.getValue('stockOnHand')}</div>
       )
     },
-    enableHiding: true,
+    enableHiding: false,
     enableSorting: true,
     meta: {
       title: 'Stock on Hand', // Add title here
@@ -102,7 +102,7 @@ export const columns: ColumnDef<Item>[] = [
         <div className='flex space-x-2'>{row.getValue('reOrderLevel')}</div>
       )
     },
-    enableHiding: true,
+    enableHiding: false,
     enableSorting: true,
     meta: {
       title: 'Reorder Level', // Add title here

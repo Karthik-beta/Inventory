@@ -57,8 +57,6 @@ export function ItemsTable({ columns, data }: DataTableProps) {
   })
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [sorting, setSorting] = useState<SortingState>([])
-  // Add state for column ordering
-  const [columnOrder, setColumnOrder] = useState<string[]>([])
 
   const table = useReactTable({
     data,
@@ -68,14 +66,12 @@ export function ItemsTable({ columns, data }: DataTableProps) {
       columnVisibility,
       rowSelection,
       columnFilters,
-      columnOrder, // Add column order to the state
     },
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
-    onColumnOrderChange: setColumnOrder, // Add handler for column order changes
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
