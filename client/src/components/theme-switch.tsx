@@ -25,16 +25,22 @@ export function ThemeSwitch() {
   useEffect(() => {
     if (theme === 'system') {
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-      const handleChange = () => {
-        setTheme(mediaQuery.matches ? 'dark' : 'light')
+      const applySystemTheme = () => {
+        const systemTheme = mediaQuery.matches ? 'dark' : 'light'
+        document.documentElement.classList.remove('light', 'dark')
+        document.documentElement.classList.add(systemTheme)
+        // Optionally update meta tag here as well
+        const metaThemeColor = document.querySelector("meta[name='theme-color']")
+        if (metaThemeColor)
+          metaThemeColor.setAttribute('content', systemTheme === 'dark' ? '#020817' : '#fff')
       }
 
-      handleChange() // Set initial theme based on system preference
-      mediaQuery.addEventListener('change', handleChange)
+      applySystemTheme()
+      mediaQuery.addEventListener('change', applySystemTheme)
 
-      return () => mediaQuery.removeEventListener('change', handleChange)
+      return () => mediaQuery.removeEventListener('change', applySystemTheme)
     }
-  }, [theme, setTheme])
+  }, [theme])
 
   return (
     <DropdownMenu modal={false}>
