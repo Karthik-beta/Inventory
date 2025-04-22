@@ -1,6 +1,6 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
-import ComingSoon from '@/components/coming-soon'
+import Adjustments from '@/features/inventory/adjustments'
 
 export const Route = createLazyFileRoute('/_authenticated/inventory/adjustments' as const)({
-  component: ComingSoon,
+  component: Adjustments,
 })
