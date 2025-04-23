@@ -22,7 +22,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { Item } from '../data/schema'
+import { Adjustment } from '../data/schema'
 import { DataTablePagination } from './data-table-pagination'
 import { DataTableToolbar } from './data-table-toolbar'
 
@@ -35,8 +35,8 @@ declare module '@tanstack/react-table' {
 }
 
 interface DataTableProps {
-  columns: ColumnDef<Item>[]
-  data: Item[]
+  columns: ColumnDef<Adjustment>[]
+  data: Adjustment[]
 }
 
 export function ItemsTable({ columns, data }: DataTableProps) {
