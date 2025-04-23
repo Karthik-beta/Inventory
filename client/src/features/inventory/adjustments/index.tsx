@@ -28,9 +28,9 @@ export default function Items() {
       <Main>
         <div className='mb-2 flex flex-wrap items-center justify-between space-y-2'>
           <div>
-            <h2 className='text-2xl font-bold tracking-tight'>Item Groups</h2>
+            <h2 className='text-2xl font-bold tracking-tight'>Inventory Adjustments</h2>
             <p className='text-muted-foreground'>
-              Manage your Groups here.
+              Manage your Adjustments here.
             </p>
           </div>
           <ItemsPrimaryButtons />
