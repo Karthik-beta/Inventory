@@ -43,24 +43,26 @@ export function Reports() {
   return (
     <div className='space-y-6'>
       <h2 className='text-lg font-bold'>Reports</h2>
-      <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+      <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4'>
         {demoReportsData.map((report) => (
           <Card key={report.id} className='relative'>
-            <CardHeader className='flex items-center justify-between'>
-              <div>
-                <CardTitle>{report.name}</CardTitle>
-                <CardDescription>{report.description}</CardDescription>
+            <CardHeader>
+              <div className='flex items-center justify-between w-full'>
+                <div>
+                  <CardTitle>{report.name}</CardTitle>
+                  <CardDescription>{report.description}</CardDescription>
+                </div>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Badge variant={statusToVariantMap[report.status]} className='ml-4'>
+                      {report.status}
+                    </Badge>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Status: {report.status}</p>
+                  </TooltipContent>
+                </Tooltip>
               </div>
-              <Tooltip>
-                <TooltipTrigger>
-                  <Badge variant={statusToVariantMap[report.status]}>
-                    {report.status}
-                  </Badge>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Status: {report.status}</p>
-                </TooltipContent>
-              </Tooltip>
             </CardHeader>
             <CardContent>
               <div className='flex items-center justify-between mb-2'>

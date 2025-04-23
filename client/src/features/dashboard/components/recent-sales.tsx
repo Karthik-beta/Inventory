@@ -15,7 +15,7 @@ const transactions = Array.from({ length: 5 }, () => {
 
 export function RecentSales() {
   return (
-    <div className='space-y-2'>
+    <div className='space-y-1'>
       {transactions.map((transaction, index) => (
         <div key={index} className='flex items-center gap-4 p-4 rounded-lg border shadow-sm'>
           <Avatar className='h-10 w-10'>

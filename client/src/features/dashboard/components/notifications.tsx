@@ -47,8 +47,8 @@ export function Notifications() {
   }
 
   return (
-    <div className='space-y-4'>
-      <div className='flex justify-between items-center mb-4'>
+    <div className='space-y-6'>
+      <div className='flex justify-between items-center mb-6'>
         <Button onClick={addNotification}>Add Notification</Button>
         <Button
           variant='outline'
@@ -60,21 +60,34 @@ export function Notifications() {
       {notifications.length === 0 ? (
         <p className='text-center text-muted-foreground'>No notifications available.</p>
       ) : (
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
           {notifications.map((notification) => (
             <Card
               key={notification.id}
               className={`${
-                notification.isRead ? 'opacity-75' : ''
-              } shadow-md hover:shadow-lg transition-shadow`}
+                notification.isRead
+                  ? 'bg-gray-50 border-gray-200 text-gray-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400'
+                  : 'bg-blue-50 border-blue-400 text-blue-800 dark:bg-blue-900 dark:border-blue-700 dark:text-blue-300'
+              } shadow-md hover:shadow-lg transition-shadow border`}
             >
-              <CardHeader className='flex justify-between items-center'>
-                <CardTitle className='truncate'>{notification.title}</CardTitle>
-                <div className='space-x-2'>
+              <CardHeader className='flex items-center justify-between'>
+                <div className='flex-1'>
+                  <CardTitle
+                    className={`truncate text-base font-semibold ${
+                      notification.isRead
+                        ? 'text-gray-500 dark:text-gray-400'
+                        : 'text-blue-800 dark:text-blue-300'
+                    }`}
+                  >
+                    {notification.title}
+                  </CardTitle>
+                </div>
+                <div className='flex space-x-2'>
                   {!notification.isRead && (
                     <Button
                       size='sm'
                       variant='ghost'
+                      className='text-green-600 hover:bg-green-50 dark:text-green-400 dark:hover:bg-green-900'
                       onClick={() => markAsRead(notification.id)}
                     >
                       Mark as Read
@@ -83,6 +96,7 @@ export function Notifications() {
                   <Button
                     size='sm'
                     variant='ghost'
+                    className='text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900'
                     onClick={() => dismissNotification(notification.id)}
                   >
                     Dismiss
@@ -90,8 +104,16 @@ export function Notifications() {
                 </div>
               </CardHeader>
               <CardContent>
-                <p className='text-sm'>{notification.message}</p>
-                <p className='text-xs text-muted-foreground mt-2'>
+                <p
+                  className={`text-sm ${
+                    notification.isRead
+                      ? 'text-gray-500 dark:text-gray-400'
+                      : 'text-blue-700 dark:text-blue-100'
+                  }`}
+                >
+                  {notification.message}
+                </p>
+                <p className='text-xs text-muted-foreground mt-2 italic dark:text-gray-500'>
                   {notification.timestamp}
                 </p>
               </CardContent>
