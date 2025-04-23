@@ -15,6 +15,9 @@ import { Search } from '@/components/search'
 import { ThemeSwitch } from '@/components/theme-switch'
 import { Overview } from './components/overview'
 import { RecentSales } from './components/recent-sales'
+import { InventoryAnalytics } from './components/inventory-analytics'
+import { Reports } from './components/reports'
+import { Notifications } from './components/notifications'
 
 export default function Dashboard() {
   return (
@@ -45,13 +48,13 @@ export default function Dashboard() {
           <div className='w-full overflow-x-auto pb-2'>
             <TabsList>
               <TabsTrigger value='overview'>Overview</TabsTrigger>
-              <TabsTrigger value='analytics' disabled>
+              <TabsTrigger value='analytics'>
                 Analytics
               </TabsTrigger>
-              <TabsTrigger value='reports' disabled>
+              <TabsTrigger value='reports'>
                 Reports
               </TabsTrigger>
-              <TabsTrigger value='notifications' disabled>
+              <TabsTrigger value='notifications'>
                 Notifications
               </TabsTrigger>
             </TabsList>
@@ -77,7 +80,7 @@ export default function Dashboard() {
                   </svg>
                 </CardHeader>
                 <CardContent>
-                  <div className='text-2xl font-bold'>$45,231.89</div>
+                  <div className='text-2xl font-bold'>₹4,52,318</div>
                   <p className='text-xs text-muted-foreground'>
                     +20.1% from last month
                   </p>
@@ -181,6 +184,15 @@ export default function Dashboard() {
                 </CardContent>
               </Card>
             </div>
+          </TabsContent>
+          <TabsContent value='analytics' className='space-y-4'>
+            <InventoryAnalytics />
+          </TabsContent>
+          <TabsContent value='reports' className='space-y-4'>
+            <Reports />
+          </TabsContent>
+          <TabsContent value='notifications' className='space-y-4'>
+            <Notifications />
           </TabsContent>
         </Tabs>
       </Main>

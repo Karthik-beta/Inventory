@@ -1,79 +1,49 @@
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from 'recharts'
 
-const data = [
-  {
-    name: 'Jan',
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-  {
-    name: 'Feb',
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-  {
-    name: 'Mar',
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-  {
-    name: 'Apr',
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-  {
-    name: 'May',
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-  {
-    name: 'Jun',
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-  {
-    name: 'Jul',
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-  {
-    name: 'Aug',
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-  {
-    name: 'Sep',
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-  {
-    name: 'Oct',
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-  {
-    name: 'Nov',
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-  {
-    name: 'Dec',
-    total: Math.floor(Math.random() * 5000) + 1000,
-  },
-]
+const data = Array.from({ length: 12 }, (_, index) => {
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  return {
+    name: monthNames[index],
+    stockIn: Math.floor(Math.random() * 3000) + 500, // Stock added
+    stockOut: Math.floor(Math.random() * 2000) + 300, // Stock sold
+  }
+})
 
 export function Overview() {
   return (
-    <ResponsiveContainer width='100%' height={350}>
-      <BarChart data={data}>
+    <ResponsiveContainer width="100%" height={400}>
+      <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+        <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
         <XAxis
-          dataKey='name'
-          stroke='#888888'
+          dataKey="name"
+          stroke="#666666"
           fontSize={12}
           tickLine={false}
           axisLine={false}
         />
         <YAxis
-          stroke='#888888'
+          stroke="#666666"
           fontSize={12}
           tickLine={false}
           axisLine={false}
-          tickFormatter={(value) => `$${value}`}
+          tickFormatter={(value) => `${value} units`}
+        />
+        <Tooltip
+          formatter={(value) => `${value} units`}
+          contentStyle={{ backgroundColor: '#ffffff', borderRadius: '8px', border: '1px solid #e0e0e0' }}
+        />
+        <Legend />
+        <Bar
+          dataKey="stockIn"
+          fill="#4caf50"
+          radius={[4, 4, 0, 0]}
+          name="Stock In"
         />
         <Bar
-          dataKey='total'
-          fill='currentColor'
+          dataKey="stockOut"
+          fill="#f44336"
           radius={[4, 4, 0, 0]}
-          className='fill-primary'
+          name="Stock Out"
         />
       </BarChart>
     </ResponsiveContainer>

@@ -15,7 +15,7 @@ import {
   IconShoppingBag,
   // IconReceipt,
 } from '@tabler/icons-react'
-import { AudioWaveform, Command, GalleryVerticalEnd } from 'lucide-react'
+import { UserCheck, Contact, Boxes } from 'lucide-react'
 import { type SidebarData } from '../types'
 
 export const sidebarData: SidebarData = {
@@ -27,17 +27,20 @@ export const sidebarData: SidebarData = {
   teams: [
     {
       name: 'Inventory',
-      logo: Command,
+      // logo: Command,
+      logo: Boxes,
       plan: 'by Pivotr',
     },
     {
       name: 'CRM',
-      logo: GalleryVerticalEnd,
+      // logo: GalleryVerticalEnd,
+      logo: Contact,
       plan: 'by Pivotr',
     },
     {
       name: 'HR',
-      logo: AudioWaveform,
+      // logo: AudioWaveform,
+      logo: UserCheck,
       plan: 'by Pivotr',
     },
   ],
