@@ -16,3 +16,16 @@ export const adjustmentSchema = z.object({
 export type Adjustment = z.infer<typeof adjustmentSchema>
 
 export const adjustmentListSchema = z.array(adjustmentSchema)
+
+export interface User {
+  id: string;
+  username: string;
+  email: string;
+  role: string;
+}
+
+export interface Item {
+  id: string;
+  name: string;
+  stock: number;
+}
