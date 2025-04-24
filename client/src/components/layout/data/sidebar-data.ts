@@ -3,17 +3,32 @@ import {
   IconHelp,
   IconLayoutDashboard,
   IconNotification,
-  // IconPackage,
-  // IconPackages,
+  IconPackages,
   IconPalette,
   IconSettings,
   IconTool,
   IconUserCog,
   IconBuildingWarehouse,
-  // IconAdjustmentsHorizontal,
+  IconAdjustmentsHorizontal,
   IconShoppingCart,
   IconShoppingBag,
   // IconReceipt,
+  IconWallet,
+  IconFileText,
+  IconReceipt,
+  IconInbox,
+  IconPackage,
+  IconCreditCard,
+  IconCash,
+  IconReceiptRefund,
+  IconNote,
+  IconUserCircle,
+  IconClipboardList,
+  IconClipboardCheck,
+  IconFileInvoice,
+  IconArrowBack,
+  IconTruck,
+  IconBuildingStore,
 } from '@tabler/icons-react'
 import { UserCheck, Contact, Boxes } from 'lucide-react'
 import { type SidebarData } from '../types'
@@ -65,22 +80,22 @@ export const sidebarData: SidebarData = {
             {
               title: 'Items',
               url: '/inventory/items',
-              // icon: IconPackage,
+              icon: IconPackage,
             },
             {
               title: 'Items Groups',
               url: '/inventory/itemsGroups',
-              // icon: IconPackages,
+              icon: IconPackages,
             },
             {
               title: 'Price Lists',
               url: '/inventory/pricelists',
-              // icon: IconReceipt,
+              icon: IconReceipt,
             },
             {
-              title: 'Inventory Adjustments',
+              title: 'Adjustments',
               url: '/inventory/adjustments',
-              // icon: IconAdjustmentsHorizontal,
+              icon: IconAdjustmentsHorizontal,
             },
           ],
         }
@@ -96,38 +111,47 @@ export const sidebarData: SidebarData = {
             {
               title: 'Customers',
               url: '/sales/customers',
+              icon: IconUserCircle,
             },
             {
               title: 'Sales Orders',
               url: '/sales/salesOrders',
+              icon: IconClipboardList,
             },
             {
               title: 'Packages',
               url: '/sales/packages',
+              icon: IconPackage,
             },
             {
               title: 'Shipments',
               url: '/sales/shipments',
+              icon: IconTruck,
             },
             {
               title: 'Delivery Challans',
               url: '/sales/deliveryChallans',
+              icon: IconFileInvoice,
             },
             {
               title: 'Invoices',
               url: '/sales/invoices',
+              icon: IconFileText,
             },
             {
               title: 'Payments Received',
               url: '/sales/paymentsReceived',
+              icon: IconCash,
             },
             {
               title: 'Sales Returns',
               url: '/sales/salesReturns',
+              icon: IconArrowBack,
             },
             {
               title: 'Credit Notes',
               url: '/sales/credit-notes',
+              icon: IconNote,
             },
           ],
         }
@@ -143,30 +167,37 @@ export const sidebarData: SidebarData = {
             {
               title: 'Vendors',
               url: '/500',
+              icon: IconBuildingStore,
             },
             {
               title: 'Expenses',
               url: '/500',
+              icon: IconWallet,
             },
             {
               title: 'Purchase Orders',
               url: '/500',
+              icon: IconClipboardCheck,
             },
             {
               title: 'Purchase Receives',
               url: '/500',
+              icon: IconInbox,
             },
             {
               title: 'Bills',
               url: '/500',
+              icon: IconFileInvoice,
             },
             {
               title: 'Payments Made',
               url: '/500',
+              icon: IconCreditCard,
             },
             {
               title: 'Vendor Credits',
               url: '/500',
+              icon: IconReceiptRefund,
             },
           ],
         }
