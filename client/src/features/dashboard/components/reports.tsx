@@ -64,11 +64,11 @@ export function Reports() {
                 <Tooltip>
                   <TooltipTrigger>
                     <Badge
-                      variant={report.status === 'Warning' ? 'outline' : statusToVariantMap[report.status]}
-                      className={`ml-4 ${
+variant={report.status === 'Warning' ? 'outline' : statusToVariantMap[report.status]}
+className={`ml-4 ${
                         report.status === 'Warning' ? 'bg-yellow-400 text-yellow-800 border-yellow-200' : ''
                       }`}
-                    >
+>
                       {report.status}
                     </Badge>
                   </TooltipTrigger>
@@ -92,10 +92,10 @@ export function Reports() {
                 )}
               </div>
               <div>
-                <p className='text-sm font-medium mb-1'>Progress</p>
+                <p className='text-sm font-medium mb-1'>{report.metricLabel}</p>
                 <Progress value={report.progress} className='h-2' />
                 <p className='text-xs text-muted-foreground mt-1'>
-                  {report.progress}% completed
+                  {report.progress}% {report.metricDescription}
                 </p>
               </div>
               <div className='mt-4 flex justify-end'>
@@ -108,5 +108,5 @@ export function Reports() {
         ))}
       </div>
     </div>
-  )
+  );
 }
