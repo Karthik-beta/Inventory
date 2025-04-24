@@ -11,7 +11,13 @@ const generateDemoData = () => {
 
 const data = generateDemoData();
 
-const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff8042', '#8dd1e1'];
+const COLORS = [
+  'rgb(139 92 246)', // Tailwind purple-500
+  'rgb(16 185 129)', // Tailwind emerald-500
+  'rgb(250 204 21)', // Tailwind yellow-500
+  'rgb(251 146 60)', // Tailwind orange-500
+  'rgb(59 130 246)', // Tailwind blue-500
+];
 
 export function PieChartComponent() {
   return (

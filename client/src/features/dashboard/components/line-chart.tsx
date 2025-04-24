@@ -16,12 +16,35 @@ export function LineChartComponent() {
   return (
     <ResponsiveContainer width="100%" height={350}>
       <LineChart data={data}>
-        <XAxis dataKey="month" stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
-        <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
+        <XAxis
+          dataKey="month"
+          stroke="rgb(107 114 128)" /* Tailwind gray-500 */
+          fontSize={12}
+          tickLine={false}
+          axisLine={false}
+        />
+        <YAxis
+          stroke="rgb(107 114 128)" /* Tailwind gray-500 */
+          fontSize={12}
+          tickLine={false}
+          axisLine={false}
+        />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="stock" stroke="#8884d8" strokeWidth={2} dot={{ r: 4 }} />
-        <Line type="monotone" dataKey="sold" stroke="#82ca9d" strokeWidth={2} dot={{ r: 4 }} />
+        <Line
+          type="monotone"
+          dataKey="stock"
+          stroke="rgb(139 92 246)" /* Tailwind purple-500 */
+          strokeWidth={2}
+          dot={{ r: 4 }}
+        />
+        <Line
+          type="monotone"
+          dataKey="sold"
+          stroke="rgb(16 185 129)" /* Tailwind emerald-500 */
+          strokeWidth={2}
+          dot={{ r: 4 }}
+        />
       </LineChart>
     </ResponsiveContainer>
   );

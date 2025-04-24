@@ -16,13 +16,13 @@ export function Overview() {
         {/* <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" /> */}
         <XAxis
           dataKey="name"
-          stroke="#666666"
+          stroke="rgb(107 114 128)" /* Tailwind gray-500 */
           fontSize={12}
           tickLine={false}
           axisLine={false}
         />
         <YAxis
-          stroke="#666666"
+          stroke="rgb(107 114 128)" /* Tailwind gray-500 */
           fontSize={12}
           tickLine={false}
           axisLine={false}
@@ -35,13 +35,13 @@ export function Overview() {
         <Legend />
         <Bar
           dataKey="stockIn"
-          fill="#4caf50"
+          fill="rgb(34 197 94)" /* Tailwind emerald-500 */
           radius={[4, 4, 0, 0]}
           name="Stock In"
         />
         <Bar
           dataKey="stockOut"
-          fill="#f44336"
+          fill="rgb(239 68 68)" /* Tailwind red-500 */
           radius={[4, 4, 0, 0]}
           name="Stock Out"
         />

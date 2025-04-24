@@ -16,12 +16,30 @@ export function BarChartComponent() {
   return (
     <ResponsiveContainer width="100%" height={350}>
       <BarChart data={data}>
-        <XAxis dataKey="name" stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
-        <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
+        <XAxis dataKey="name" 
+          stroke="rgb(107 114 128)" /* Tailwind gray-500 */
+          fontSize={12} 
+          tickLine={false} 
+          axisLine={false} 
+        />
+        <YAxis 
+          stroke="rgb(107 114 128)" /* Tailwind gray-500 */
+          fontSize={12} 
+          tickLine={false} 
+          axisLine={false} 
+        />
         <Tooltip />
         <Legend />
-        <Bar dataKey="sales" fill="#8884d8" radius={[4, 4, 0, 0]} />
-        <Bar dataKey="profit" fill="#82ca9d" radius={[4, 4, 0, 0]} />
+        <Bar 
+          dataKey="sales" 
+          fill="rgb(139 92 246)" /* Tailwind purple-500 */
+          radius={[4, 4, 0, 0]} 
+        />
+        <Bar 
+          dataKey="profit" 
+          fill="rgb(16 185 129)" /* Tailwind emerald-500 */
+          radius={[4, 4, 0, 0]} 
+        />
       </BarChart>
     </ResponsiveContainer>
   );

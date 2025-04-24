@@ -7,15 +7,22 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 
 // Generate dynamic demo data
 const generateDemoReportsData = (count: number) => {
-  const reportTypes = ['Stock Levels', 'Sales Summary', 'Inventory Turnover', 'Low Stock Alerts']
+  const reportTypes = ['Stock Levels', 'Sales Summary', 'Inventory Turnover', 'Low Stock Alerts'];
   const descriptions = [
     'Current stock levels by item',
     'Monthly sales summary',
     'Rate of inventory turnover',
     'Items running low on stock',
-  ]
-  const statuses = ['Good', 'Warning', 'Critical']
-  const trends = ['up', 'down', 'neutral']
+  ];
+  const statuses = ['Good', 'Warning', 'Critical'];
+  const trends = ['up', 'down', 'neutral'];
+  const metricLabels = ['Stock Availability', 'Sales Progress', 'Turnover Rate', 'Low Stock Items'];
+  const metricDescriptions = [
+    'in stock',
+    'sales completed',
+    'turnover achieved',
+    'items below threshold',
+  ];
 
   return Array.from({ length: count }, (_, index) => ({
     id: index + 1,
@@ -27,7 +34,9 @@ const generateDemoReportsData = (count: number) => {
     status: statuses[Math.floor(Math.random() * statuses.length)],
     trend: trends[Math.floor(Math.random() * trends.length)],
     progress: Math.floor(Math.random() * 100), // Random progress percentage
-  }))
+    metricLabel: metricLabels[index % metricLabels.length],
+    metricDescription: metricDescriptions[index % metricDescriptions.length],
+  }));
 }
 
 const demoReportsData = generateDemoReportsData(10)
@@ -54,7 +63,12 @@ export function Reports() {
                 </div>
                 <Tooltip>
                   <TooltipTrigger>
-                    <Badge variant={statusToVariantMap[report.status]} className='ml-4'>
+                    <Badge
+                      variant={report.status === 'Warning' ? 'outline' : statusToVariantMap[report.status]}
+                      className={`ml-4 ${
+                        report.status === 'Warning' ? 'bg-yellow-400 text-yellow-800 border-yellow-200' : ''
+                      }`}
+                    >
                       {report.status}
                     </Badge>
                   </TooltipTrigger>
