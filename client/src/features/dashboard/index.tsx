@@ -65,7 +65,7 @@ export default function Dashboard() {
                 Notifications
                   <Badge 
                     variant="destructive" 
-                    className="absolute -top-1 -right-2 h-4 w-4 flex items-center justify-center rounded-full p-0 text-[10px]"
+                    className="absolute -top-1 -right-2 h-4 w-4 flex items-center justify-center p-0 text-[10px]"
                   >
                     14
                   </Badge>
