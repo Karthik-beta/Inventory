@@ -10,41 +10,22 @@ import { ItemsTable } from './components/adjustments-table'
 import ItemsProvider from './context/adjustments-context'
 import { adjustmentListSchema } from './data/schema'
 import { adjustments } from './data/adjustments'
-
-import { Link } from '@tanstack/react-router'
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
+import { TopBreadcrumb } from '@/components/layout/breadcrumb'
 
 export default function Items() {
   // Parse user list
   const adjustmentList = adjustmentListSchema.parse(adjustments)
 
+  const breadcrumbItems = [
+    { label: 'Dashboard', path: '/' },
+    { label: 'Inventory', isDisabled: true },
+    { label: 'Adjustments', isCurrentPage: true }
+  ];
+
   return (
     <ItemsProvider>
       <Header fixed>
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink>
-                <Link to="/">Dashboard</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              Inventory
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Adjustments</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+        <TopBreadcrumb items={breadcrumbItems} />
         <div className='ml-auto flex items-center space-x-4'>
         <Search />
           <ThemeSwitch />

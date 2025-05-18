@@ -10,43 +10,24 @@ import { ItemsTable } from './components/items-table'
 import ItemsProvider from './context/items-context'
 import { itemListSchema } from './data/schema'
 import { items } from './data/items'
-
-import { Link } from '@tanstack/react-router'
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
+import { TopBreadcrumb } from '@/components/layout/breadcrumb'
 
 export default function Items() {
   // Parse user list
   const itemList = itemListSchema.parse(items)
 
+  const breadcrumbItems = [
+    { label: 'Dashboard', path: '/' },
+    { label: 'Inventory', isDisabled: true },
+    { label: 'Items', isCurrentPage: true }
+  ];
+
   return (
     <ItemsProvider>
       <Header fixed>
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink>
-                <Link to="/">Dashboard</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              Inventory
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Items</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-        <div className='ml-auto flex items-center space-x-4'>          
-        <Search />
+        <TopBreadcrumb items={breadcrumbItems} />
+        <div className='ml-auto flex items-center space-x-4'>
+          <Search />
           <ThemeSwitch />
           <ProfileDropdown />
         </div>

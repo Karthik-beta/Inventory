@@ -8,38 +8,19 @@ import { Button } from "@/components/ui/button";
 import { IconFolders, IconBox, IconLayersIntersect, IconTags } from "@tabler/icons-react";
 import { ThemeSwitch } from '@/components/theme-switch'
 import ItemGroupsProvider from "./context/item-groups-context";
-
-import { Link } from '@tanstack/react-router'
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
+import { TopBreadcrumb } from '@/components/layout/breadcrumb'
 
 export default function itemGroups() {
+    const breadcrumbItems = [
+        { label: 'Dashboard', path: '/' },
+        { label: 'Inventory', isDisabled: true },
+        { label: 'Item Groups', isCurrentPage: true }
+    ];
+
   return (    
     <ItemGroupsProvider>
         <Header fixed>
-            <Breadcrumb>
-                <BreadcrumbList>
-                    <BreadcrumbItem>
-                    <BreadcrumbLink>
-                        <Link to="/">Dashboard</Link>
-                    </BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                    Inventory
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                    <BreadcrumbPage>Item Groups</BreadcrumbPage>
-                    </BreadcrumbItem>
-                </BreadcrumbList>
-            </Breadcrumb>
+        <TopBreadcrumb items={breadcrumbItems} />
             <div className='ml-auto flex items-center space-x-4'>
             <Search />
             <ThemeSwitch />
