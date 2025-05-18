@@ -44,13 +44,14 @@ export default function Dashboard() {
             <BreadcrumbSeparator />
             <BreadcrumbItem>
               <BreadcrumbPage>
-              <TopNav links={topNav} />
+              {/* <TopNav links={topNav} /> */}
+              Overview
               </BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        {/* <TopNav links={topNav} /> */}
         <div className='ml-auto flex items-center space-x-4'>
+        <TopNav links={topNav} />
           <Search />
           <ThemeSwitch />
           <ProfileDropdown />
