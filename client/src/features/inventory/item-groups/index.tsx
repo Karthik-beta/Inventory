@@ -9,12 +9,39 @@ import { IconFolders, IconBox, IconLayersIntersect, IconTags } from "@tabler/ico
 import { ThemeSwitch } from '@/components/theme-switch'
 import ItemGroupsProvider from "./context/item-groups-context";
 
+import { Link } from '@tanstack/react-router'
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+
 export default function itemGroups() {
   return (    
     <ItemGroupsProvider>
         <Header fixed>
-            <Search />
+            <Breadcrumb>
+                <BreadcrumbList>
+                    <BreadcrumbItem>
+                    <BreadcrumbLink>
+                        <Link to="/">Dashboard</Link>
+                    </BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                    Inventory
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                    <BreadcrumbPage>Item Groups</BreadcrumbPage>
+                    </BreadcrumbItem>
+                </BreadcrumbList>
+            </Breadcrumb>
             <div className='ml-auto flex items-center space-x-4'>
+            <Search />
             <ThemeSwitch />
             <ProfileDropdown />
             </div>

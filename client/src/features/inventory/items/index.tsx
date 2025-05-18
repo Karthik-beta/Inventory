@@ -11,6 +11,16 @@ import ItemsProvider from './context/items-context'
 import { itemListSchema } from './data/schema'
 import { items } from './data/items'
 
+import { Link } from '@tanstack/react-router'
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+
 export default function Items() {
   // Parse user list
   const itemList = itemListSchema.parse(items)
@@ -18,8 +28,25 @@ export default function Items() {
   return (
     <ItemsProvider>
       <Header fixed>
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink>
+                <Link to="/">Dashboard</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              Inventory
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Items</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+        <div className='ml-auto flex items-center space-x-4'>          
         <Search />
-        <div className='ml-auto flex items-center space-x-4'>
           <ThemeSwitch />
           <ProfileDropdown />
         </div>

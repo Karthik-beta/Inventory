@@ -19,12 +19,37 @@ import { InventoryAnalytics } from './components/inventory-analytics'
 import { Reports } from './components/reports'
 import { Notifications } from './components/notifications'
 
+import { Link } from '@tanstack/react-router'
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+
 export default function Dashboard() {
   return (
     <>
       {/* ===== Top Heading ===== */}
       <Header>
-        <TopNav links={topNav} />
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink>
+                <Link to="/">Dashboard</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>
+              <TopNav links={topNav} />
+              </BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+        {/* <TopNav links={topNav} /> */}
         <div className='ml-auto flex items-center space-x-4'>
           <Search />
           <ThemeSwitch />
