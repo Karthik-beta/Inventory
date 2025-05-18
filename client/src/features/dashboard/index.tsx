@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Badge } from '@/components/ui/badge'
 import { Header } from '@/components/layout/header'
 import { Main } from '@/components/layout/main'
 import { TopNav } from '@/components/layout/top-nav'
@@ -60,8 +61,14 @@ export default function Dashboard() {
               <TabsTrigger value='reports'>
                 Reports
               </TabsTrigger>
-              <TabsTrigger value='notifications'>
+              <TabsTrigger value='notifications' className="relative">
                 Notifications
+                  <Badge 
+                    variant="destructive" 
+                    className="absolute -top-1 -right-2 h-4 w-4 flex items-center justify-center rounded-full p-0 text-[10px]"
+                  >
+                    14
+                  </Badge>
               </TabsTrigger>
             </TabsList>
           </div>
